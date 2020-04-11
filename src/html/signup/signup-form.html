@@ -16,7 +16,7 @@
             <div class="signup-form-box-border">
                 <div class="signup-type-logo-container">
                     <h1 class="signup-type-logo"><a href="#"><span>Code <br>T<span class="signup-type-crown">♔</span>gether</span></a></h1>
-                    <h1>회원가입</h1>
+                    <h1 id="signup-type-title">test</h1>
                 </div>
 
                 <form class="signup-form">
@@ -87,4 +87,23 @@ function blurFunction() {
 
     document.querySelector(".signup-form-check").style.color ="gold";
 }
+
+// 클릭에 따라 type 유형 다르게 주기! 
+class TypeOfTitle {
+    type = '';
+    title = document.querySelector('#signup-type-title');
+    submit = document.querySelector('#signup-form-submit')
+    method = (title, subtitle) => {
+        if (this.type === "signup") {
+            this.title.innerText = title;
+            this.submit.innerText = subtitle;
+        } else { this.title.innerText = title;
+                this.submit.innerText = subtitle}
+    }
+}
+
+const a = new TypeOfTitle;
+a.setTitle(`정보수정`, `수정하기`);
+// a.setTitle(`회원가입`, `가입하기`);
+
 </script>

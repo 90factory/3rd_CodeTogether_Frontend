@@ -1,18 +1,23 @@
-.lecture-info-container { margin: 0 auto; display: flex; flex-direction: row; justify-content: center; align-items: center; width: 65rem; height: 100%; background-color:wheat;}
+.lecture-info-container { margin: 0 auto; display: flex; flex-direction: row; width: 65rem; height: 100%; background-color:whitesmoke;}
 
-.lecture-info-items { display: flex; flex-direction: column; justify-content: center; width: 50%;}
+.lecture-info-items { display: flex; flex-direction: column; justify-content: center; width: 50%; margin-bottom: auto;}
 
-.lecture-info-item { background-color: darkgrey; border: darkmagenta solid 1px; height: 30rem;}
+.lecture-info-item { height: 30rem;}
+.lecture-info-card { background-color: oldlace; margin: 2rem auto 2rem auto; width: 85%; height: 90%; border-radius: 1rem;}
+.lecture-photo-box { display: flex;}
 
-.lecture-info-item > div { display: flex; }
+.lecture-photo { margin: 4rem auto 0 auto; width: 25rem; height: 15rem;}
 
-.lecture-photo { margin: 6rem auto 0 auto; width: 25rem; height: 13rem;}
+.lecture-info-price { display: flex; flex-direction: column; align-items: center; justify-content: space-between; margin: 0 auto; text-align: center; width: 25rem; height: 3rem;}
 
-.lecture-info-price { display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin: 0rem auto; text-align: center; width: 25rem; height: 3rem;}
+.lecture-info-price > div { margin-top: 0.5rem; margin-left:0rem; width: 25rem; font-size: 1.2rem; color: #555; font-weight: bold;}
+#lecture-info-price { color: crimson;}
+.lecture-info-price > div > span:nth-child(2) > svg {font-size: 1.5rem; color: tomato; margin-left: 7rem;}
+.lecture-info-price > div > span:nth-child(3) > svg {font-size: 1.5rem; color: gold; margin-left: 0.5rem;}
 
-.lecture-info-price > div { width: 12rem; font-size: 1.2rem; color: crimson; font-weight: bold;}
-.lecture-info-price > button { border-radius: 0.5rem; background-color: teal; color: whitesmoke; width: 12rem; padding: 0.5rem; font-size: 1rem; font-weight: bold; animation: 0.3s;}
-.lecture-info-price > button:hover { width: 15rem; background-color: crimson; color: cornsilk;}
+.lecture-info-price > button { margin-top: 1rem; border-radius: 0.5rem; background-color: coral; color: whitesmoke; width: 25rem; height: 6rem; padding: 0.5rem; font-size: 1.2rem; font-weight: bold; animation: 0.3s;}
+.lecture-info-price > button:hover { width: 25rem; background-color: teal; color: cornsilk;}
+#lecture-info-price { font-size: 1.5rem;}
 
 .lecture-info-subitem { display: flex; flex-direction: column; margin: 2rem;}
 
@@ -24,3 +29,4 @@
 .lecture-info-spac { display: flex; flex-direction: row;}
 .lecture-info-spac > li { margin-right: 1.2rem; }
 .lecture-info-spac > span { font-size: 1.2rem; }
+
