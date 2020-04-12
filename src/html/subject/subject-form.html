@@ -46,13 +46,13 @@
                             </p>
                             <div class="lecture-langs">
                                 <label for="lecture-lang" class="lecture-lang">
-                                    <input type="checkbox" name="lecture-lang" value="Java">
+                                    <input type="radio" name="lecture-lang" value="Java">
                                 Java</label>
                                 <label for="lecture-lang" class="lecture-lang">
-                                    <input type="checkbox" name="lecture-lang" value="Javascript">
+                                    <input type="radio" name="lecture-lang" value="Javascript">
                                 Javascript</label>
                                 <label for="lecture-lang" class="lecture-lang">
-                                    <input type="checkbox" name="lecture-lang" value="Python">
+                                    <input type="radio" name="lecture-lang" value="Python">
                                 Python</label>
                             </div>
                         </div>
@@ -90,15 +90,18 @@
                     
                     <div class="lecture-form-item-subtitle" id="Lcurriculum">
                         <div class="lecture-titles">
-                            <label for="lecture-curriculum">1주차:</label>
+                            <label for="lecture-curriculum"></label>
                         </div>
-                            <input type="text" id="videoTitle" name="lecture-curriculum-title">
-                            <input type="file" id="videofile" name="lecture-curriculum-video">
+                        <div><button id="video-upload" onclick="addLists()">강의추가</button></div>
+                            <ul id="video-upload-lists">
+ 
+                            </ul>
+                            <!-- <input type="file" id="videofile" name="lecture-curriculum-video"> -->
                     </div>
                 
                 </div>
 
-                <div class="lecture-form-item">
+                <!-- <div class="lecture-form-item">
                     <h1><span><i class="fas fa-info-circle"></i></span>강사정보: </h1>
                 
                     <div class="lecture-form-item-subtitle" id="Ttitle">
@@ -114,7 +117,7 @@
                         </div>
                             <textarea type="textarea" id="desc" name="lecture-form-teacher-desc"></textarea>
                     </div>
-                </div>
+                </div> -->
 
                 <div>
                     <button id="submitbtn">등록하기</button>
@@ -143,6 +146,27 @@ class TypeOfTitle {
 const b = new TypeOfTitle;
 b.setTitle(`수정할 내용을 적어주세요`, `수정하기`);
 // a.setTitle(`회원가입`, `가입하기`);
+
+class addList {
+    unidad = 0;
+    list = document.querySelector("#video-upload-lists");
+    subject = '';
+    addUnidad = () => {
+        this.unidad = this.unidad + 1;
+        const subject = `<li>${this.unidad}강: <input type="text" id="videoTitle-${this.unidad}" class="videoTitle" name="lecture-curriculum-title"><button onclick="deleteUnidad">삭제</button></li>`;
+        this.list.innerHTML = this.subject + subject;
+        this.subject = this.subject + subject;
+    }
+    deleteUnidad = () => {
+
+    }
+}
+
+const c = new addList;
+
+const addLists = () => { c.addUnidad();  }
+const deleteUnidad = () => { c.deleteUnidad(); }
+
 
 </script>
 </html>

@@ -33,4 +33,4 @@ input[type=text], textarea[type=textarea] { border-style: solid; border-width: 0
 
 #videofile { margin-left: 0;}
 #LectureFrom > div:nth-child(4) { margin: 3rem 0; display: flex; justify-content: center; align-items: center;}
-#submitbtn { color: wheat; background-color: tomato; width: 10rem; height: 3rem; border-radius: 0.5rem;}
+#submitbtn { color: wheat; background-color: tomato; width: 10rem; height: 3rem; border-radius: 0.5rem; margin-left: 25rem;}

@@ -1,0 +1,26 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+.notice {
+    text-align: center;
+    background: white;
+    width: 50vw;
+    padding: 2em;
+    border-radius: 1em;
+}
+.notice > h1 {
+    font-size: 1.2rem;
+    text-align: center;
+}
+.notice > button {
+    margin-top: 1rem;
+            
+}

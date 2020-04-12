@@ -20,8 +20,9 @@
                 <div class="mypage-profile-box">
                     <div><i class="fas fa-user-circle"></i></div>
                     <!-- 정보수정 클릭 시 signup-form.html 로 연결 -->
-                    <p> {{name}}님<br> 오늘도 즐겁게 학습하세요! </p>
-                    <button class="mypage-btn">내 정보 수정 <i class="fas fa-pen-square"></i></button>
+                    <p> {{name}}님<br id="mypage-msg"> 오늘도 즐겁게 학습하세요! </p>
+                    <button class="mypage-btn" id="">내 정보 수정 <i class="fas fa-pen-square"></i></button>
+                    <button class="mypage-btn" id=""></button>
                 </div>
             </div>
             <div id="mypage-edit-form"></div>
@@ -40,8 +41,20 @@
         </div>
     </section>    
 </body>
+
 </html>
 <script>
+class ForTeacher {
+
+    msg = document.querySelector("#mypage-msg");
+    addBtn = document.querySelector(
+
+    )
+    methods = {
+        greeting : this.msg.innerText = `반갑습니다!`,
+        
+    }
+}
 
 
 </script>

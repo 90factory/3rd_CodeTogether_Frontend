@@ -25,13 +25,17 @@
                 <div class="main-video-container" style="text-align: center">
                     <object type="text/html" class="main-video-container-item" data="//www.youtube.com/embed/khMzXxZvryw" allowfullscreen=""></object>    
                 </div>
+                <div class="main-login-container" id="main-isLogined" name=''>
+                </div>
  
-                <div class="main-login-container">
+                <div class="main-login-container" id="toLogin">
                     <div class="main-login-items">
                         <div class="main-login-item-logo">
                             <h1 class="main-logo"><a href="#"><span>Code <br>T<span class="main-crown">♔</span>gether</span></a></h1>
                         </div>
-                        <div class="main-login-item-info">
+                        
+                        <div class="main-login-item-info" id="main-login">
+                            <!-- 이 부분에 로그인화면 보이기 -->
                             <span class="main-login-icons">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -45,8 +49,8 @@
                         </div>
                         
                         <div class="main-login-btns">
-                            <button class="main-login-btn">LOGIN</button>
-                            <button class="main-login-btn">NAVER</button>
+                            <button type="submit" class="main-login-btn" id="main-login-btn">LOGIN</button>
+                            <button class="main-login-btn" id="main-login-naver">NAVER</button>
                         </div>
                     </div>
                 </div>
@@ -233,12 +237,13 @@
 </body>
 
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+<script src="/src/js/main-page/main-page.js"></script>
 <script>
-  var swiper = new Swiper('.swiper-container', {
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+    
+
+
+
 </script>
+
+<!-- <script src="/src/js/main-page.js"></script> -->
 </html>

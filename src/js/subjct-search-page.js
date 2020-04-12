@@ -1,0 +1,1 @@
+document.getElementById("sbj-seacrch-pag").innerHTML='<object type="text/html" data="/src/html/subject/subject-search.html"></object>';

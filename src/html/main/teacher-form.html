@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/src/css/default/default.css">
+    <style>
+        .teacher-form-entire{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .teacher-form-container{
+            text-align: center;
+            background: white;
+            width: 50vw;
+            padding: 2em;
+            border-radius: 1em;
+        }
+    </style>
+</head>
+<body>
+    <section class="teacher-form-entire">
+        <div class="teacher-form-container">
+            <h1>강사등록</h1>
+            <form id="teacher-addInfo" enctype="multipart/form-data">
+                <label for="teacher-photo">강사사진</label>
+                    <input type="file" multiple name="teacher-photo" id="teacher-photo"></input>
+                    <output id="result"></output>
+                <label for="teacher-desc">강사소개</label>
+                    <textarea name="teacher-desc" id="teacher-desc"></textarea>
+                <button type="submit" id="teacher-form-submit">등록하기</button>
+            </form>
+            <div id="teacher-info-check">
+                <ul>
+                    <li><span>강사사진: </span>{{teacher.name}}</li>
+                    <li><span>강사소개: </span>{{teacher.desc}}</li>
+                </ul>
+                <button>수정</button>
+                <button onclick="changePage()">완료</button>
+            </div>
+        </div>
+    </section>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$('#teacher-info-check').hide();
+
+
+$(document).ready(()=> {
+    // $('#teacher-photo').change( e => {
+    //     event.preventDefault();
+    //     const photo = document.getElementById('teacher-photo').files[0];
+    //     const reader = new FileReader();
+    //     reader.addEventListener('load', e => {
+    //         document.getElementById('result').src = reader.result;}, true);
+    //         reader.readAsDataURL(input);
+    //     }, true);
+    // })
+
+    $('#teacher-form-submit').click( e => {
+       event.preventDefault();
+        console.log('등록버튼클릭')
+        
+        const formData = new FormData();
+
+        formData.append('uploadPhoto', $('#teacher-photo')[0].files[0]);
+        formData.append('teacherDesc', $('#teacher-desc').val());
+        
+        console.log(formData)
+
+
+        $.ajax({
+            type:'post',
+            url:'/',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (result) => {
+                console.log('성공')
+                $('#teacher-addInfo').reset();
+                $('#teacher-addInfo').hide();
+                $('#teacher-info-check').show();
+            },
+            error: (err) => {
+                console.log(err)
+                
+            }
+        })
+    })
+})
+
+</script>
+</html>

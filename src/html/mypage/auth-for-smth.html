@@ -23,4 +23,31 @@
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(()=> {
+        $("#auth-for-smth-btn").click((e)=> {
+            event.preventDefault();
+            console.log('다음단계 버튼 활성화')
+            const data = {
+                password : $('#auth-for-smth-pw').val()
+            }
+            console.log(data);
+
+            $.ajax({
+                type:"post",
+                url:"/",
+                data:JSON.stringify(data),
+
+                success: (result) => {
+                    console.log('성공')
+                },
+                error: (err) => {
+                    console.log(err)
+                }
+            })
+        })
+    })
+</script>
+
 </html>
