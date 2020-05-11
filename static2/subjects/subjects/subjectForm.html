@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강의정보 입력</title>
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header_footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/subjectForm.css' %}">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-logo"><a href="/"><span>Code <br>T<span class="header-crown">♔</span>gether</span></a></h1>
+        <nav class="header-nav" id="nav-for-member">
+            <ul class="header-nav-items">
+                <li class="header-nav-item">
+                    <button onclick="location.href='/'">HOME</button>
+                </li>
+                <span class="header-div">❙</span>
+                <li class="header-nav-item">
+                    <button onclick="location.replace('/subjects/')">LECTURE</button>
+                </li>
+                <span class="header-div">❙</span>
+                <li class="header-nav-item">
+                    <button onclick="location.href='/accounts/'">MYPAGE</button>
+                </li>
+                <span class="header-div">❙</span>
+                <li class="header-nav-item">
+                    <button onclick="location.href='accounts/logout/'" id="logOut">LOG OUT
+                        </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="lecture-form-entire">
+        <div class="lecture-form-container">
+            {% if update %}
+            <h1 id="lecture-form-type">❰ 강의{{ update }} ❱</h1>
+
+            <form class="lecture-form-items" enctype="multipart/form-data" id="LectureFrom">
+                
+                <div class="lecture-form-item">
+                    <h1><span><i class="fas fa-info-circle"></i></span>강의정보: </h1>
+                    
+                    <div class="lecture-form-item-subtitle" id="Ltitle">
+                        <div class="lecture-titles">
+                            <label for="lecture-title"><i class="far fa-caret-square-right"></i>강의명<span id="msg1"></span></label> {{ name }}
+                        </div>
+                            <input type="text" id="lecture-title" name="lecture-title" value="{{ name }}">
+                    </div>
+
+                        <div class="lecture-form-item-subtitle" id="Lphoto">
+                            <div class="lecture-titles">
+                                <label for="lecture-photo"><i class="far fa-caret-square-right"></i>강의사진<span id="msg2"></span></span></label>
+                            
+                                <!-- <span>현재사진 : </span><a href="{{ sub_image }}">{{ sub_image }}</a> -->
+                                <input type="file" id="lecture-photo" name="lecture-photo">
+                            </div>
+                            <figure id="result" class="current-background-photo" style="background-image: url({{ sub_image }});">
+                                <img class="subject-img" alt="현재강의사진" src="{{ sub_image }}">
+                            </figure>
+                            <div id="result2"></div>
+                        </div>
+
+                        <div class="lecture-form-item-subtitle" id="Lprice">
+                            <div class="lecture-titles">
+                                <label for="lecture-price"><i class="far fa-caret-square-right"></i>강의료<span id="msg3"></span></label> {{ price }}
+                            </div>
+                                <input type="text" id="lecture-price" name="lecture-price" value="{{ price }}" required>
+                        </div>
+                        
+                        <div class="lecture-form-item-subtitle" id="Llanguage">
+                            <p>
+                                <i class="fas fa-keyboard"></i>언어: {{ lang }}<span id="msg4"></span>
+                            </p>
+
+                            {% if language == 'Java' %}
+                            <div class="lecture-langs">
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" checked="checked" name="lecture-lang" value="Java">
+                                Java</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Javascript">
+                                Javascript</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Python">
+                                Python</label>
+                            </div>
+                            {% elif language == 'Javascript' %}
+                            <div class="lecture-langs">
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Java">
+                                Java</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" checked="checked" name="lecture-lang" value="Javascript">
+                                Javascript</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Python">
+                                Python</label>
+                            </div>
+                            {% else %}
+                            <div class="lecture-langs">
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Java">
+                                Java</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Javascript">
+                                Javascript</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" checked="checked" name="lecture-lang" value="Python">
+                                Python</label>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="lecture-form-item-subtitle" id="Llevel">
+                            <p>
+                                <i class="fas fa-award"></i>난이도: {{ difficulty }}<span id="msg5"></span>
+                            </p>
+                            {% if difficulty == '입문' %}
+                            <div class="lecture-langs">
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" checked="checked" name="lecture-level" value="입문">
+                                입문</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="중급">
+                                중급</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="고급">
+                                고급</label>
+                            </div>
+                            {% elif difficulty == '중급' %}
+                            <div class="lecture-langs">
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="입문">
+                                입문</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" checked="checked" name="lecture-level" value="중급">
+                                중급</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="고급">
+                                고급</label>
+                            </div>
+                            {% else %}
+                            <div class="lecture-langs">
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="입문">
+                                입문</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="중급">
+                                중급</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" checked="checked" name="lecture-level" value="고급">
+                                고급</label>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="lecture-form-item-subtitle" id="Ldesc">
+                            <div class="lecture-titles">
+                                <label for="lecture-desc"><i class="far fa-caret-square-right"></i>강의소개<span id="msg6"></span></label>
+                            </div>
+                            <textarea type="textarea" name="lecture-desc"  id="lecture-desc">{{ description }}</textarea>
+                        </div>
+                </div>
+
+
+                
+                <div class="lecture-form-item">
+                    <h1><span><i class="fas fa-info-circle"></i></span>교육과정: </h1>
+                    <span id="msg7"></span>
+                    <div class="lecture-form-item-subtitle-curr" id="Lcurriculum">
+                        <div class="subjectForm-items-container">
+                            <div class="subjectForm-items">
+                                <div>제목: <input id="subjectTitle" type="text"></div>
+                                <div>영상: <input id="subjectVideo" type="text"></div>
+                            </div>
+                            <div class="subjectForm-add">
+                                <button id="subject-btn">강의추가</button>
+                            </div>
+                        </div>
+                        <p><i class="fas fa-edit"></i>강의목록</p>
+                        <ul id="video-upload-lists subjects" class="subjectForm-lists">
+                            {% for key, val in sub_video_list.items %}
+                            <div class="subjectForm-container curr">
+                                <li class="subjectTitle" id="{{ key }}">
+                                    <span>제목: ❝ </span>{{ key }}<span> ❞</span> 
+                                </li>
+                                <li class="subjectVideo">영상: 
+                                    <a class="subjectVideoLink" href="{{ val }}">{{ val }}</a>
+                                </li>
+                                <div>
+                                    <button class="deleteBtn-small" id="deleteBtn-js">삭제</button>
+                                </div>
+                            </div>
+                                <!-- <li class="video-upload-lists" id="remove-video{{ forloop.counter }}">
+                                    <input type="text" name="videoTitle" class="subjectSubTitle" value="{{ key }}" placeholder="제목" multiple>
+                                    <input type="text" name="subjectSubVideo" class="subjectSubVideo" value="{{ val }}" placeholder="영상" multiple>
+                                    <button class="deleteBtn" id="deleteBtn-js" value="{{ forloop.counter }}" >삭제</button>
+                                </li> -->
+                            {% endfor %}
+                            </ul>
+
+                    </div>
+
+                </div>
+
+
+                <div class="subjectForm-submit-btn">
+                    <button id="subjectForm-submitbtn">등록하기</button>
+                </div>
+            </form>
+        </div>
+
+        {% else %}
+        <div class="lecture-form-container">
+
+            <h1 id="lecture-form-type">❰ 강의등록 ❱</h1>
+
+            <form class="lecture-form-items" enctype="multipart/form-data" id="LectureFrom">
+
+                <div class="lecture-form-item">
+                    <h1><span><i class="fas fa-info-circle"></i></span>강의정보: </h1>
+
+                    <div class="lecture-form-item-subtitle" id="Ltitle">
+                        <div class="lecture-titles">
+                            <label for="lecture-title"><i class="far fa-caret-square-right"></i>강의명<span id="msg1"></span></label>
+                        </div>
+                            <input type="text" id="lecture-title" name="lecture-title" class="input" required>
+                    </div>
+
+                        <div class="lecture-form-item-subtitle" id="Lphoto">
+                            <div class="lecture-titles">
+                                <label for="lecture-photo"><i class="far fa-caret-square-right"></i>강의사진<span id="msg2"></span></label>
+                                <input type="file" id="lecture-photo" name="lecture-photo" required>
+                            </div>
+                            <div id="result"><i class="fas fa-user vImg"></i></div>
+                            <div id="result2"></div>
+                        </div>
+
+                        <div class="lecture-form-item-subtitle" id="Lprice">
+                            <div class="lecture-titles">
+                                <label for="lecture-price"><i class="far fa-caret-square-right"></i>강의료<span id="msg3"></span></label>
+                            </div>
+                            <input type="number" id="lecture-price" name="lecture-price" class="input" required>
+                        </div>
+
+                        <div class="lecture-form-item-subtitle" id="Llanguage">
+                            <p>
+                                <i class="fas fa-keyboard"></i>언어:<span id="msg4"></span>
+                            </p>
+
+                            <div class="lecture-langs">
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Java">
+                                Java</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Javascript">
+                                Javascript</label>
+                                <label for="lecture-lang" class="lecture-lang">
+                                    <input type="radio" name="lecture-lang" value="Python">
+                                Python</label>
+                            </div>
+                        </div>
+
+                        <div class="lecture-form-item-subtitle" id="Llevel">
+                            <p>
+                                <i class="fas fa-award"></i>난이도:<span id="msg5"></span>
+                            </p>
+                            <div class="lecture-langs">
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="입문">
+                                입문</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="중급">
+                                중급</label>
+                                <label for="lecture-level" class="lecture-level">
+                                    <input type="radio" name="lecture-level" value="고급">
+                                고급</label>
+                            </div>
+                        </div>
+
+                        <div class="lecture-form-item-subtitle" id="Ldesc">
+                            <div class="lecture-titles">
+                                <label for="lecture-desc"><i class="far fa-caret-square-right"></i>강의소개<span id="msg6"></span></label>
+                            </div>
+                            <textarea type="textarea" name="lecture-desc" id="lecture-desc" class="input"></textarea>
+                        </div>
+                </div>
+
+
+
+                <div class="lecture-form-item">
+                    <h1><span><i class="fas fa-info-circle"></i></span>교육과정: </h1>
+                    <span id="msg7"></span>
+                    <div class="lecture-form-item-subtitle-curr" id="Lcurriculum">
+                        <div class="subjectForm-items-container">
+                            <div class="subjectForm-items">
+                                <div>제목: <input id="subjectTitle" type="text"></div>
+                                <div>영상: <input id="subjectVideo" type="text"></div>
+                            </div>
+                            <div class="subjectForm-add">
+                                <button id="subject-btn">강의추가</button>
+                            </div>
+                        </div>
+                        <p><i class="fas fa-edit"></i>강의 추가 목록</p>
+                        <ul id="subjects" class="subjectForm-lists">
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div class="subjectForm-submit-btn">
+                    <button id="subjectForm-submitbtn">등록하기</button>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+    </section>
+
+    <section class="modal-container" id="subjectForm-modal">
+        <div class="modal" id="subjectForm-modal-notice">
+            <div class="notice subjectForm">
+                <h1 class="modal-title">{{ name }}강사님!</h1>
+                <p class="modal-msg">📚{{subject.title}}💻 강의</p>
+                <p class="modal-msg">등록이 완료되었습니다.</p>
+                <button id="msg-ok">확인</button>
+            </div>
+        </div>
+    </section>
+    
+<footer class="footer">
+    <div class="footer-items">
+        <h1 class="footer-logo"><a href="#"><span>Code <br>T<span class="footer-crown">♔</span>gether</span></a></h1>
+        <div class="footer-rights">© CodeT♔gether ALL RIGHTS RESERVED</div>
+    </div>
+</footer>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{% static 'js/subjectForm.js' %}"></script>
+
+</html>
